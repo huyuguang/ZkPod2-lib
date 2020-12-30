@@ -8,13 +8,13 @@
 #include "groth09/sec51.h"
 
 // t: public vector<Fr>, size = n
-// x, y: secret matric<Fr>, size = m*n
+// x, y: secret matrix<Fr>, size = m*n
 // z: secret Fr
 // open: com(x1), com(y1), com(x2), com(y2) ... com(z)
 // prove: z = <x1,y1 o t> + <x2,y2 o t>...
 // proof size: 2*log(m)+4 G1, 2n+3 Fr
-// prove cost: 2*log(m)*mulexp(n)
-// verify cost: mulexp(n)
+// prove cost: 4m*eccexp + 2*multiexp(n)
+// verify cost: multiexp(n)
 namespace groth09::sec53 {
 
 struct CommitmentPub {
@@ -377,6 +377,7 @@ inline void ComputeSigmaXY(ProverInput const& input, Fr* sigma_xy1,
   *sigma_xy2 = parallel::Accumulate(xy2.begin(), xy2.end(), FrZero());
 }
 
+// 4 * com_pub.a.size()/2 * eccexp
 inline void UpdateCom(CommitmentPub& com_pub, CommitmentSec& com_sec,
                       Fr const& tl, Fr const& tu, G1 const& cl, G1 const& cu,
                       Fr const& e, Fr const& ee) {

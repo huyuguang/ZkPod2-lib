@@ -7,10 +7,11 @@
 #include "./details.h"
 #include "./sec51.h"
 
-// t is a public vector which size = n
-// x, y are secret matric which size = m*n
-// commit {x1}, {y1}...., z
-// prove z = <x1,y1 o t> + <x2,y2 o t>...
+// t: public vector<Fr>, size = n
+// x, y: secret matrix<Fr>, size = m*n
+// z: secret Fr
+// open: com(x1), com(y1), com(x2), com(y2) ... com(z)
+// prove: z = <x1,y1 o t> + <x2,y2 o t>...
 namespace groth09::sec52 {
 
 struct CommitmentPub {

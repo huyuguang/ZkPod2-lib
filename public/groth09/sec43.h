@@ -9,8 +9,8 @@
 // open c1=com(z1)...cm=com(zm)
 // prove: z=x o y
 // proof size: 2*log(m)+6 G1, 3n+5 Fr
-// prove cost: 2*log(m)*mulexp(n)
-// verify cost: 2*mulexp(n)
+// prove cost: 4m*eccexp + 4*multiexp(n)
+// verify cost: 2*multiexp(n)
 namespace groth09::sec43 {
 
 struct CommitmentPub {

@@ -11,8 +11,8 @@
 // open: com(X), com(Y), com(z)
 // prove: z = <X, Y o t>
 // proof size: (2n+3) Fr and 4 G1
-// prove cost: 2*mulexp(n)
-// verify cost: mulexp(n)
+// prove cost: 2*multiexp(n)
+// verify cost: multiexp(n)
 namespace groth09::sec51 {
 
 class ProverInput {
